@@ -1,60 +1,104 @@
-<?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package sit
- */
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Error 404</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #000;
+    }
 
-get_header(); ?>
+    .img {
+      position: absolute;
+      z-index: 1;
+      margin: 7.5em 27em 0em;
+    }
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+    #container {
+      display: inline-block;
+      width: content-box;
+      height: content-box;
+      margin: 0 auto;
+      position: relative;
+    }
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'sit' ); ?></h1>
-				</header><!-- .page-header -->
+    #canvas {
+      position: relative;
+      z-index: 20;
+    }
+  </style>
+</head>
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'sit' ); ?></p>
+<body>
+  <div id="container">
+    <img class="img" src="https://i.imgur.com/5SzodBW.png" alt="" />
+    <canvas id="canvas"></canvas>
+  </div>
+  <iframe allowtransparency='false' frameborder='0' marginheight='0' marginwidth='0' scrolling='no' src='http://audio-play.blogspot.com/p/lluvia.html'
+    style='height:0; width:0;'></iframe>
 
-					<?php
-						get_search_form();
+  <script>
+    (function() {
+      var canvas = document.getElementById('canvas');
+      /*altura y ancho del canvas*/
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-						the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width;
+        var h = canvas.height;
+        ctx.strokeStyle = 'rgba(174,194,224,0.5)'; /*Color de lluvia*/
+        ctx.lineWidth = 1.1; /*tama�o de trazo*/
+        ctx.lineCap = 'round';
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'sit' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
+        /*cantidad de lluvia*/
+        var init = [];
+        var maxParts = 2000;
+        for (var a = 0; a < maxParts; a++) {
+          init.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            l: Math.random() * 1,
+            xs: -4 + Math.random() * 4 + 6,
+            ys: Math.random() * 10 + 24
+          });
+        }
 
-					<?php
+        var particles = [];
+        for (var b = 0; b < maxParts; b++) {
+          particles[b] = init[b];
+        }
+        /*dibujar la lluvia*/
+        function draw() {
+          ctx.clearRect(0, 0, w, h);
+          for (var c = 0; c < particles.length; c++) {
+            var p = particles[c];
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p.x + p.l * p.xs, p.y + p.l * p.ys);
+            ctx.stroke();
+          }
+          move();
+        }
+        /*mover la lluvia*/
+        function move() {
+          for (var b = 0; b < particles.length; b++) {
+            var p = particles[b];
+            p.x += p.xs;
+            p.y += p.ys;
+            if (p.x > w || p.y > h) {
+              p.x = Math.random() * w;
+              p.y = -20;
+            }
+          }
+        }
 
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'sit' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+        setInterval(draw, 30);
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_footer();
+      }
+    })();
+  </script>
+</body>
+</html>
