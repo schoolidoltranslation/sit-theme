@@ -1,0 +1,350 @@
+/*!
+Theme Name: sit
+Theme URI: http://underscores.me/
+Author: SIT Team
+Author URI: https://lovelivesit.com/
+Description: Tema oficial de SIT
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: sit
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+/*
+ * Globals
+ */
+
+
+/*
+ * Header
+ */
+
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: bold;
+  color: rgba(255,255,255,.5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255,255,255,.25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-nav-scroll {
+    max-width: 100%;
+    height: 2.5rem;
+    margin-top: .25rem;
+    overflow: hidden;
+    font-size: .875rem;
+  }
+
+  .navbar-nav-scroll ul {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: bold;
+}
+
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: rgba(255,255,255,.5);
+}
+
+
+/*
+ * Fixes
+ */
+.post img,
+.post video,
+.card-body img,
+.card-body video {
+  height: auto;
+  max-width: 100%;
+}
+
+img.alignleft,
+img.alignright {
+	float: none;
+	margin: 0;
+}
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+
+embed,
+iframe,
+object {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption,
+.gallery-caption {
+	color: #666;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	font-style: italic;
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+/* Media Elements */
+
+.mejs-container {
+	margin-bottom: 1.5em;
+}
+
+/* Audio Player */
+
+.mejs-controls a.mejs-horizontal-volume-slider,
+.mejs-controls a.mejs-horizontal-volume-slider:focus,
+.mejs-controls a.mejs-horizontal-volume-slider:hover {
+	background: transparent;
+	border: 0;
+}
+
+/* Playlist Color Overrides: Light */
+
+.site-content .wp-playlist-light {
+	border-color: #eee;
+	color: #222;
+}
+
+.site-content .wp-playlist-light .wp-playlist-current-item .wp-playlist-item-album {
+	color: #333;
+}
+
+.site-content .wp-playlist-light .wp-playlist-current-item .wp-playlist-item-artist {
+	color: #767676;
+}
+
+.site-content .wp-playlist-light .wp-playlist-item {
+	border-bottom: 1px dotted #eee;
+	-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+}
+
+.site-content .wp-playlist-light .wp-playlist-item:hover,
+.site-content .wp-playlist-light .wp-playlist-item:focus {
+	border-bottom-color: rgba(0, 0, 0, 0);
+	background-color: #767676;
+	color: #fff;
+}
+
+.site-content .wp-playlist-light a.wp-playlist-caption:hover,
+.site-content .wp-playlist-light .wp-playlist-item:hover a,
+.site-content .wp-playlist-light .wp-playlist-item:focus a {
+	color: #fff;
+}
+
+/* Playlist Color Overrides: Dark */
+
+.site-content .wp-playlist-dark {
+	background: #222;
+	border-color: #333;
+}
+
+.site-content .wp-playlist-dark .mejs-container .mejs-controls {
+	background-color: #333;
+}
+
+.site-content .wp-playlist-dark .wp-playlist-caption {
+	color: #fff;
+}
+
+.site-content .wp-playlist-dark .wp-playlist-current-item .wp-playlist-item-album {
+	color: #eee;
+}
+
+.site-content .wp-playlist-dark .wp-playlist-current-item .wp-playlist-item-artist {
+	color: #aaa;
+}
+
+.site-content .wp-playlist-dark .wp-playlist-playing {
+	background-color: #333;
+}
+
+.site-content .wp-playlist-dark .wp-playlist-item {
+	border-bottom: 1px dotted #555;
+	-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+}
+
+.site-content .wp-playlist-dark .wp-playlist-item:hover,
+.site-content .wp-playlist-dark .wp-playlist-item:focus {
+	border-bottom-color: rgba(0, 0, 0, 0);
+	background-color: #aaa;
+	color: #222;
+}
+
+.site-content .wp-playlist-dark a.wp-playlist-caption:hover,
+.site-content .wp-playlist-dark .wp-playlist-item:hover a,
+.site-content .wp-playlist-dark .wp-playlist-item:focus a {
+	color: #222;
+}
+
+/* Playlist Style Overrides */
+
+.site-content .wp-playlist {
+	padding: 0.625em 0.625em 0.3125em;
+}
+
+.site-content .wp-playlist-current-item .wp-playlist-item-title {
+	font-weight: 700;
+}
+
+.site-content .wp-playlist-current-item .wp-playlist-item-album {
+	font-style: normal;
+}
+
+.site-content .wp-playlist-current-item .wp-playlist-item-artist {
+	font-size: 10px;
+	font-size: 0.625rem;
+	font-weight: 800;
+	letter-spacing: 0.1818em;
+	text-transform: uppercase;
+}
+
+.site-content .wp-playlist-item {
+	padding: 0 0.3125em;
+	cursor: pointer;
+}
+
+.site-content .wp-playlist-item:last-of-type {
+	border-bottom: none;
+}
+
+.site-content .wp-playlist-item a {
+	padding: 0.3125em 0;
+	border-bottom: none;
+}
+
+.site-content .wp-playlist-item a,
+.site-content .wp-playlist-item a:focus,
+.site-content .wp-playlist-item a:hover {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	background: transparent;
+}
+
+.site-content .wp-playlist-item-length {
+	top: 5px;
+}
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 40em) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 62em) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 42rem;
+  }
+}
