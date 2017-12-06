@@ -50,8 +50,8 @@
             wp_nav_menu([
               'menu'          => 'menu-1',
               'container'			=> 'ul',
-              'menu_class'    => 'navbar-nav flex-row',
-              'before'        => '<li class="nav-item">',
+              'menu_class'    => 'header-nav navbar-nav flex-row',
+              'before'        => '<li class="nav-item lead">',
               'after'         => '</li>',
               'depth'         => 0,
               'walker'        => new Custom_Nav_Menu()
