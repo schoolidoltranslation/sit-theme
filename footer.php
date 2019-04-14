@@ -26,7 +26,7 @@
               'walker'        => new Custom_Nav_Menu()
             ]);
           ?>
-          <span class="ml-auto">With ❤️ LLSIT.</span>
+          <span class="ml-auto">With ❤️ SIT.</span>
         </div>
       </div>
     </div>

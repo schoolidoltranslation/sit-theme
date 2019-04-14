@@ -1,3 +1,3 @@
 ### Sit-theme
 
-WP template project for https://lovelivesit.com website
+WP template project for https://sit.moe website
