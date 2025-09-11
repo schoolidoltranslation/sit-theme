@@ -18,7 +18,7 @@ jobs:
 
       - name: Create ZIP archive
         run: |
-          zip -r "${{ github.ref_name }}.zip" . -x "*.git*" "*node_modules*" "*.zip" ".github/*" "README.md" "LICENSE" "SECURITY.md" ".editorconfig"
+          zip -r sit-theme.zip sit-theme . -x "*.git*" "*node_modules*" "*.zip" ".github/*" "README.md" "LICENSE" "SECURITY.md" ".editorconfig"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
