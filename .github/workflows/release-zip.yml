@@ -6,7 +6,7 @@ on:
       - 'v*.*.*'  # Trigger on tags like v1.0.0
 
 permissions:
-  contents: write  # Required to create releases
+  contents: write
 
 jobs:
   build-zip-and-release:
@@ -16,37 +16,47 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set ZIP filename
-        id: zip_name
+      - name: Set folder and ZIP names
+        id: names
         run: |
+          THEME_FOLDER="sit-theme"
           ZIP_NAME="sit-theme-${{ github.ref_name }}.zip"
+          echo "theme_folder=$THEME_FOLDER" >> $GITHUB_OUTPUT
           echo "zip_name=$ZIP_NAME" >> $GITHUB_OUTPUT
+
+      - name: Create theme folder and copy files
+        run: |
+          mkdir -p ${{ steps.names.outputs.theme_folder }}
+
+          # Copy all files/folders except those you want to exclude
+          # Adjust this list as needed
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' \
+            ! -name 'node_modules' \
+            ! -name '*.zip' \
+            ! -name '.github' \
+            ! -name 'README.md' \
+            ! -name 'LICENSE' \
+            ! -name '.gitignore' \
+            -exec cp -r {} ${{ steps.names.outputs.theme_folder }} \;
 
       - name: Create ZIP archive
         run: |
-          # Create ZIP with dynamic name, exclude unnecessary files
-          zip -r "${{ steps.zip_name.outputs.zip_name }}" . \
-            -x "*.git*" \
-               ".editorconfig" \
-               "SECURITY.md" \
-               ".github/*" \
-               "README.md" \
-               "LICENSE" \
-               ".gitignore"
+          zip -r "${{ steps.names.outputs.zip_name }}" ${{ steps.names.outputs.theme_folder }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ${{ steps.zip_name.outputs.zip_name }}
+          files: ${{ steps.names.outputs.zip_name }}
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
           body: |
             ## 📦 Theme Release: ${{ github.ref_name }}
             
-            This release includes the theme files packaged as a ZIP for easy deployment.
+            Theme packaged as \`${{ steps.names.outputs.zip_name }}\` for easy deployment.
+            
+            Extract to get a folder named \`sit-theme\`.
 
             > Generated automatically by GitHub Actions.
-          draft: false
-          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
