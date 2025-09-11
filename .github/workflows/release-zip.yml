@@ -1,0 +1,31 @@
+name: Create Release with ZIP
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-zip-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create ZIP archive
+        run: |
+          zip -r "${{ github.ref_name }}.zip" . -x "*.git*" "*node_modules*" "*.zip" ".github/*" "README.md" "LICENSE" "SECURITY.md" ".editorconfig"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ github.ref_name }}.zip
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: "Automated release with source archive."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
