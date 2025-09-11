@@ -51,7 +51,16 @@
     <header id="masthead" class="mb-5 site-header">
       <nav class="navbar navbar-expand navbar-light flex-column flex-md-row">
         <a class="navbar-brand mx-auto mx-lg-0" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-          <img src="<?php echo esc_url( wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' )[0] ); ?>">
+          <?php
+            $custom_logo_id = get_theme_mod('custom_logo');
+            $image = wp_get_attachment_image_src($custom_logo_id, 'full');
+            if ($image) {
+              $logo_url = esc_url($image[0]);
+            } else {
+              $logo_url = '';
+            }
+          ?>
+          <img src="<?php echo $logo_url; ?>">
         </a><!-- .navbar-brand -->
 
         <div class="navbar-nav-scroll ml-0 ml-lg-auto">
