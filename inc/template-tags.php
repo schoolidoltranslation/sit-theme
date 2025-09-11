@@ -69,7 +69,7 @@ if ( ! function_exists( 'sit_entry_footer' ) ) :
     echo '<div class="ml-auto">';
 
     if ( !is_singular() ) {
-      echo '<a href="' . get_the_permalink() . '" class="btn btn-primary btn-sm">Leer más</a>';
+	echo '<a href="' . esc_url( get_the_permalink() ) . '" class="btn btn-primary btn-sm">Leer más</a>';
     }
 
     // class="fb-comments-count" data-href="http://example.com/"

@@ -22,7 +22,7 @@
 
 			<p class="lead">
         ¿Listo para publicar tu primer post?
-        <a href="<?php esc_url( admin_url( 'post-new.php' ) ) ?>">Empieza por aquí</a>.
+	<a href="<?php echo esc_url( admin_url( 'post-new.php' ) ); ?>">Empieza por aquí</a>.
       </p>
 
 		<?php elseif ( is_search() ) : ?>

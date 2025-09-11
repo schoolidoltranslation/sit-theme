@@ -43,7 +43,7 @@ function sit_categories_links($thelist, $separator, $parents) {
 function sit_search_form( $form ) {
   $form = '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >
     <div class="input-group">
-      <input type="text" value="' . get_search_query() . '" class="form-control" placeholder="Buscar por..." name="s" id="s" />
+  <input type="text" value="' . esc_attr( get_search_query() ) . '" class="form-control" placeholder="Buscar por..." name="s" id="s" />
       <span class="input-group-btn">
         <input type="submit" class="btn btn-secondary" id="searchsubmit" value="'. esc_attr__( 'Buscar' ) .'" />
       </span>

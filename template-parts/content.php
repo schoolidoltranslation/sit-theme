@@ -12,7 +12,7 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="card mb-3">
     <?php if ( has_post_thumbnail() ) : ?>
-      <?php echo get_the_post_thumbnail( null, 'medium', [ 'class' => 'card-img-top' ] ) ?>
+  <?php echo wp_kses_post( get_the_post_thumbnail( null, 'medium', [ 'class' => 'card-img-top' ] ) ); ?>
     <?php endif; ?>
     <div class="card-header">
       <header class="entry-header">
